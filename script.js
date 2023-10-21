@@ -1,3 +1,5 @@
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 document.addEventListener("DOMContentLoaded", function () {
   const uploadButton = document.getElementById("upload-button");
   const fileInput = document.getElementById("file-input");
