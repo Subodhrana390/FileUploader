@@ -1,4 +1,18 @@
-document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+let copy = document.querySelector(".copy i");
+console.dir(copy);
+let qrcode = new QRious({
+  element: document.getElementById("qrcode-2"),
+  background: "#ffffff",
+  backgroundAlpha: 1,
+  foreground: "#5868bf",
+  foregroundAlpha: 1,
+  level: "H",
+  padding: 0,
+  size: 128,
+  value: "website",
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   const uploadButton = document.getElementById("upload-button");
@@ -25,6 +39,20 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => {
           if (response.ok) {
+            return response.json();
+          } else {
+            console.log(" ");
+          }
+        })
+        .then((data) => {
+          if (data) {
+            new QRious({
+              element: document.getElementById("qrcode"),
+              value: data.attachments[0].url,
+            });
+
+            document.querySelector(".Show_info h1").innerText =
+              data.attachments[0].url;
             createNotification(
               "File uploaded and sent to Discord successfully."
             );
@@ -57,3 +85,15 @@ document
   .addEventListener("click", function () {
     createNotification("This notification will close in 2 seconds.");
   });
+
+function copyText() {
+  let url = document.querySelector(".Show_info h1");
+  let tempTextarea = document.createElement("textarea");
+  tempTextarea.value = url.innerText;
+  document.querySelector(".urlSection").appendChild(tempTextarea);
+  tempTextarea.select();
+  tempTextarea.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.querySelector(".urlSection").removeChild(tempTextarea);
+  createNotification("Copied");
+}

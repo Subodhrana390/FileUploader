@@ -4,6 +4,8 @@
 <head>
     <title>File Upload to Discord</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -13,6 +15,16 @@
         <button type="button" id="upload-button">Upload</button>
     </form>
     <div id="show-notification"></div>
+
+    <div class="Show_info">
+        <div class="urlSection">
+            <h1 id="url"></h1>
+            <div class="copy">
+                <i class="fa-solid fa-copy" onclick="copyText()"></i>
+            </div>
+        </div>
+        <canvas id="qrcode"></canvas>
+    </div>
     <script src="script.js"></script>
 </body>
 

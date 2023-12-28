@@ -40,3 +40,28 @@ h1 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 9999;
 }
+
+.Show_info h1 {
+  font-size: 11px;
+  border: 1px solid #333;
+  color: #fff;
+  background-color: #333;
+}
+
+.Show_info > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 80%;
+  gap: 1rem;
+  border: 1px solid lightgray;
+}
+
+.Show_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
